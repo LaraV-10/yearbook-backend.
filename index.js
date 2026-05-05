@@ -6,6 +6,10 @@ const PORT = 3000;
 app.get('/', (req, res) => {
   res.json({ mensagem: 'Yearbook API está no ar! 🎓' });
 });
+app.get('/status', (req, res) => {
+  status: 'ok'
+  timestamp: new Date() 
+});
 
 if (process.env.VERCEL !== '1') {
   app.listen(PORT, () => {
