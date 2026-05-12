@@ -7,18 +7,11 @@
   "scripts": {
     "start": "node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LaraV-10/yearbook-backend..git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LaraV-10/yearbook-backend./issues"
-  },
-  "homepage": "https://github.com/LaraV-10/yearbook-backend.#readme",
-  "dependencies": {
-    "express": "^5.2.1"
-  }
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+      "express": "^4.21.2"
+    }
 }
