@@ -1,17 +1,20 @@
 {
   "name": "yearbook-backend.",
   "version": "1.0.0",
-  "description": "API REST do Yearbook Digital — IFNMG Salinas 2026",
+  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js"
   },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "description": "",
-    "dependencies": {
-      "express": "^4.21.2"
-    }
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "prisma": "^6.19.3"
+  }
 }
