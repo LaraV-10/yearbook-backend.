@@ -1,36 +1,34 @@
+// Datasource — conexão com o banco PostgreSQL no Neon
+datasource db {
+  provider = "postgresql"           // tipo de banco
+  url      = env("DATABASE_URL")    // lê a URL do arquivo .env
+}
+
 // Generator — gera o Prisma Client em JavaScript
 generator client {
   provider = "prisma-client-js"
 }
 
-// Datasource — conexão com o banco PostgreSQL
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
 // Enum — valores fixos para o campo role
 enum Role {
-  USER
-  ADMIN
+  USER    // aluno comum
+  ADMIN   // administrador (professor ou aluno com permissão especial)
 }
 
-// Model Aluno
+// Model Aluno — representa a tabela "Aluno" no banco
 model Aluno {
-  id            Int        @id @default(autoincrement())
-  nome          String
-  email         String     @unique
-  senhaHash     String
-  cidade        String?
-  frase         String?
-  planosFuturos String?
-  fotoUrl       String?
-  role          Role       @default(USER)
-  criadoEm      DateTime   @default(now())
-
-  mensagens     Mensagem[] // relação 1:N
+  id            Int        @id @default(autoincrement())  // PK, gerado automaticamente
+  nome          String                                     // obrigatório
+  email         String     @unique                         // obrigatório e único
+  senhaHash     String                                     // hash da senha (nunca retornado pela API)
+  cidade        String?                                    // opcional
+  frase         String?                                    // opcional
+  planosFuturos String?                                    // opcional
+  fotoUrl       String?                                    // opcional (URL do Uploadcare)
+  role          Role       @default(USER)                  // USER por padrão
+  criadoEm      DateTime   @default(now())                 // data de criação automática
+  mensagens     Mensagem[]                                 // relação 1:N — um aluno tem muitas mensagens
 }
-
 // Model Mensagem
 model Mensagem {
   id        Int      @id @default(autoincrement())
