@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Lara Vitória",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
