@@ -67,7 +67,40 @@ export async function criarAluno(req, res) {
 // Dica: o id vem de req.params, os dados atualizados de req.body
 // Dica: se o aluno não existir, o Prisma lança um erro — use try/catch
 export async function atualizarAluno(req, res) {
-  // implemente aqui
+  // 🎯 PUT /alunos/:id — atualiza um aluno existente
+// Dica: use prisma.aluno.update({ where: { id: Number(id) }, data: { ... }, select: selectSemSenha })
+// Dica: o id vem de req.params, os dados atualizados de req.body
+// Dica: se o aluno não existir, o Prisma lança um erro — use try/catch
+export async function atualizarAluno(req, res) {
+  
+  const { id } = req.params;
+
+  
+  const { nome, email, senhaHash, cidade, frase, planosFuturos } = req.body;
+
+  try {
+  
+    const alunoAtualizado = await prisma.aluno.update({
+      where: { 
+        id: Number(id) 
+      },
+      data: {
+        nome,
+        email,
+        senhaHash,
+        cidade,
+        frase,
+        planosFuturos
+      },
+      select: selectSemSenha 
+    });
+
+    return res.json(alunoAtualizado);
+
+  } catch (error) {
+    return res.status(404).json({ erro: 'Aluno não encontrado' });
+  }
+}
 }
 
 // 🎯 DELETE /alunos/:id — deleta um aluno
